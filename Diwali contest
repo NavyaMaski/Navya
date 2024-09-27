@@ -1,0 +1,238 @@
+def encode_number(N):
+    str_N = str(N)
+    encoded_str = ""
+    
+    for digit in str_N:
+        squared_digit = int(digit) ** 2  # Square the digit
+        encoded_str += str(squared_digit)  
+    
+    encoded_value = int(encoded_str)
+    
+    return encoded_value
+
+# Input reading
+N = int(input())
+
+result…
+14
+def find_equilibrium_position(N, A):
+    total_sum = sum(A)  
+    left_sum = 0  
+
+    for i in range(N):
+        right_sum = total_sum - left_sum - A[i]
+        
+        if left_sum == right_sum:
+            return i + 1  
+
+        left_sum += A[i]
+
+    return "NOT FOUND"
+
+# Input reading
+N = int(input())
+A…
+15
+import math
+
+def gcd(a, b):
+    return math.gcd(a, b)
+
+def lcm(a, b):
+    return (a * b) // gcd(a, b)
+
+# Input reading
+a, b = map(int, input().split())
+
+# Calculate GCD and LCM
+gcd_value = gcd(a, b)
+lcm_value = lcm(a, b)
+
+print(gcd_value)
+print(lcm_value)
+16
+def missing_characters_to_pangram(input_string):
+    # Define the full alphabet
+    alphabet = set('abcdefghijklmnopqrstuvwxyz')
+    
+    input_chars = set(input_string.lower())
+    
+    missing_chars = alphabet - input_chars
+    
+    sorted_missing_chars = sorted(missing_chars)
+    
+    return ''.join(sort…
+17
+def two_sum(nums, target):
+
+  num_to_index = {}
+  for i, num in enumerate(nums):
+    complement = target - num
+    if complement in num_to_index:
+      return [num_to_index[complement], i]
+    num_to_index[num] = i
+
+  raise ValueError("No two numbers add up to the target sum.")
+nums = list(map(int,input().s…
+18
+def reverse_words(string):
+    words = string.split()  
+    words.reverse()  
+    reversed_string = " ".join(words)  
+    return reversed_string
+input_string = input()
+reversed_string = reverse_words(input_string)
+print(reversed_string)
+19
+def find_peak_element(arr):
+  n = len(arr)
+  if n == 1:
+    return 0
+
+  if arr[0] > arr[1]:
+    return 0
+
+  if arr[n - 1] > arr[n - 2]:
+    return n - 1
+
+  for i in range(1, n - 1):
+    if arr[i] > arr[i - 1] and arr[i] > arr[i + 1]:
+      return i
+
+  return -1
+n = int(input())
+arr = list(map(int, input().s…
+20
+def max_subarray_sum(nums):
+    max_so_far = nums[0]
+    curr_max = nums[0]
+
+    for num in nums[1:]:
+        curr_max = max(num, curr_max + num)
+        max_so_far = max(max_so_far, curr_max)
+
+    return max_so_far
+n = int(input())
+nums = list(map(int, input().split()))
+max_sum = max_subarray_sum(nums)
+print(max_sum)
+21
+def find_farthest_coordinate(arr):
+  current_position = 0
+  max_distance = 0
+
+  for i in range(len(arr)):
+    current_position += arr[i]
+    max_distance = max(max_distance, abs(current_position))
+
+  return max_distance
+arr = list(map(int,input(). split()))
+result = find_farthest_coordinate(arr)
+print(result)
+22
+def last_candy_recipient(N, K, A):
+    last_child = (A - 1 + K - 1) % N + 1
+    return last_child
+
+# Example usage:
+N, K, A = map(int, input().strip().split())
+print(last_candy_recipient(N, K, A))
+23
+def min_key_presses(s):
+    target = int(s)
+    presses = 0
+    
+    while target > 0:
+        if target % 100 == 0:
+            target //= 100
+        else:
+            target //= 10
+        presses += 1
+    
+    return presses
+
+# Example usage:
+s = input().strip()  
+print(min_key_presses(s))
+24
+Ph nalle copy madbidu
+8th ondhe ondhu test case pass agalla but submit madbidu hange
+Haa sari
+a=input()
+p=int(input())
+k=int(input())
+s=max(0,p-k-1)
+e=min(len(a),p+k)
+print(min(a[s:e]))
+goals=int(input())
+size=int(input())
+l=list(map(int,input().split()))
+max=0
+for i in range(0,len(l)):
+    sub=l[i:i+size]
+    k=1
+    s=0
+    for j in sub:
+        s+=(j*k)
+        k+=1
+        if  s>max:
+            max=s
+print(max)
+def count_returns_to_start(N, A):
+    current_position = 0
+    return_count = 0
+    
+    for move in A:
+        current_position += move
+        if current_position == 0:
+            return_count += 1
+            
+    return return_count
+
+# Example usage:
+N = int(input())
+A = list(map(int,input().split())) # Example moves
+result = count_returns_to_start(N, A)
+print(result)  # Output: 3
+def total_chocolates_for_A(chocolates):
+    total_chocolates_A = 0
+    
+    # Iterate through each jar
+    for jar in chocolates:
+        # Full cycles where A gets 1 chocolate per cycle
+        total_chocolates_A += jar // 3
+        
+        # If there are leftover chocolates and A gets 1 more
+        if jar % 3 >= 1:
+            total_chocolates_A += 1
+            
+    return total_chocolates_A
+jar=int(input())
+chocolates=list(map(int,input(). split ()))
+print(total_chocolates_for_A(chocolates))
+def max_problems_solved(N, P):
+    # Total available time for solving problems (240 minutes minus travel time)
+    remaining_time = 240 - P
+    
+    # Initialize counters for time and problems solved
+    time_spent = 0
+    count = 0
+    
+    # Iterate over problems from 1 to N
+    for i in range(1, N + 1):
+        # Time to solve the ith problem
+        time_to_solve = 5 * i
+        
+        # Check if there's enough time left to solve this problem
+        if time_spent + time_to_solve > remaining_time:
+            break  # Max can't solve more problems
+        
+        # Update the time spent and count of problems solved
+        time_spent += time_to_solve
+        count += 1
+    
+    return count
+N=int(input())
+P=int(input())
+result=max_problems_solved(N,P)
+print(result)
